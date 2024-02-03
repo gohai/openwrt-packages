@@ -101,6 +101,11 @@ proto_openconnect_setup() {
 	# obsoleted by openconnect >9.12
 	append_args --useragent "AnyConnect-compatible"
 
+	# debugging
+	#append_args -vvvv
+	# needs the tcpdump package
+	#(/usr/sbin/tcpdump -i eth0 -s 65535 -w /root/tcpdump >/dev/null 2>&1 )&
+
 	# migrate to standard config files
 	[ -f "/etc/config/openconnect-user-cert-vpn-$config.pem" ] && mv "/etc/config/openconnect-user-cert-vpn-$config.pem" "/etc/openconnect/user-cert-vpn-$config.pem"
 	[ -f "/etc/config/openconnect-user-key-vpn-$config.pem" ] && mv "/etc/config/openconnect-user-key-vpn-$config.pem" "/etc/openconnect/user-key-vpn-$config.pem"
