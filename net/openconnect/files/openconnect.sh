@@ -98,6 +98,9 @@ proto_openconnect_setup() {
 	[ "$no_dtls" = 1 ] && append_args --no-dtls
 	[ -n "$mtu" ] && append_args --mtu "$mtu"
 
+	# obsoleted by openconnect >9.12
+	append_args --useragent "AnyConnect-compatible"
+
 	# migrate to standard config files
 	[ -f "/etc/config/openconnect-user-cert-vpn-$config.pem" ] && mv "/etc/config/openconnect-user-cert-vpn-$config.pem" "/etc/openconnect/user-cert-vpn-$config.pem"
 	[ -f "/etc/config/openconnect-user-key-vpn-$config.pem" ] && mv "/etc/config/openconnect-user-key-vpn-$config.pem" "/etc/openconnect/user-key-vpn-$config.pem"
