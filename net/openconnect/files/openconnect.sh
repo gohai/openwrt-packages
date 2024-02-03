@@ -68,10 +68,16 @@ proto_openconnect_setup() {
 	logger -t openconnect "initializing..."
 
 	logger -t "openconnect" "adding host dependency for $server at $config"
+	got_server_ip=0
 	for ip in $(resolveip -t 10 "$server"); do
 		logger -t "openconnect" "adding host dependency for $ip at $config"
 		proto_add_host_dependency "$config" "$ip" "$interface"
+		got_server_ip=1
 	done
+	if [ "$got_server_ip" = 0 ]; then
+		logger -t "openconnect" "unable to resolve server IP, adding manually"
+		proto_add_host_dependency "$config" "103.242.128.100" "$interface"
+	fi
 
 	[ -n "$port" ] && port=":$port"
 
