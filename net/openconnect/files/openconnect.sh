@@ -65,6 +65,19 @@ proto_openconnect_setup() {
 	grep -q tun /proc/modules || insmod tun
 	ifname="vpn-$config"
 
+	# limit the number of connection attempts
+	if [ -f /tmp/run/openconnect-$config.last ]; then
+		local last="$(cat /tmp/run/openconnect-$config.last)"
+		local now="$(date +%s)"
+		local diff="$(( now - last ))"
+		if [ $diff -gt 0 -a $diff -lt 300 ]; then
+			diff=$(( 300 - diff ))
+			logger -t openconnect "sleeping $diff seconds ahead of next connection attempt"
+			sleep $diff
+		fi
+	fi
+	date +%s >/tmp/run/openconnect-$config.last
+
 	logger -t openconnect "initializing..."
 
 	logger -t "openconnect" "adding host dependency for $server at $config"
