@@ -98,9 +98,6 @@ proto_openconnect_setup() {
 	[ "$no_dtls" = 1 ] && append_args --no-dtls
 	[ -n "$mtu" ] && append_args --mtu "$mtu"
 
-	# obsoleted by openconnect >9.12
-	append_args --useragent "AnyConnect-compatible"
-
 	# debugging
 	#append_args -vvvv
 	# needs the tcpdump package
