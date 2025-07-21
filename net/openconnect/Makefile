@@ -9,11 +9,15 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openconnect
 PKG_VERSION:=9.12
-PKG_RELEASE:=5
+PKG_REV:=f17fe20d337b400b476a73326de642a9f63b59c8
+PKG_RELEASE:=6
 
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://gitlab.com/openconnect/openconnect.git
+PKG_FIXUP:=autoreconf
+
+PKG_SOURCE_VERSION:=$(PKG_REV)
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://www.infradead.org/openconnect/download
-PKG_HASH:=a2bedce3aa4dfe75e36e407e48e8e8bc91d46def5335ac9564fbf91bd4b2413e
 
 PKG_LICENSE:=LGPL-2.1-or-later
 PKG_LICENSE_FILES:=COPYING.LGPL
