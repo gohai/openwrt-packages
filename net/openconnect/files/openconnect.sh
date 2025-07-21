@@ -80,7 +80,7 @@ proto_openconnect_setup() {
 
 	logger -t openconnect "initializing..."
 
-	[ -n "$interface" ] && {
+	#[ -n "$interface" ] && {
 		local trials=5
 
 		[ -n $uri ] && server=$(echo $uri | awk -F[/:] '{print $4}')
@@ -98,7 +98,7 @@ proto_openconnect_setup() {
 			done
 		fi
 		rm -f "$tmpfile"
-	}
+	#}
 
 	[ -n "$port" ] && port=":$port"
 	[ -z "$uri" ] && uri="$server$port"
