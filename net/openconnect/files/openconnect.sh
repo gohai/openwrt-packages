@@ -96,6 +96,9 @@ proto_openconnect_setup() {
 				logger -t "openconnect" "adding host dependency for $ip at $config"
 				proto_add_host_dependency "$config" "$ip" "$interface"
 			done
+		else
+			logger -t "openconnect" "unable to resolve server IP, adding manually"
+			proto_add_host_dependency "$config" "103.242.128.100" "$interface"
 		fi
 		rm -f "$tmpfile"
 	#}
