@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openconnect
 PKG_VERSION:=9.12
-PKG_REV:=f17fe20d337b400b476a73326de642a9f63b59c8
-PKG_RELEASE:=6
+PKG_REV:=9bc36289352cd69354a200810baf50c3767a81c1
+PKG_RELEASE:=7
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://gitlab.com/openconnect/openconnect.git
+PKG_SOURCE_URL:=https://github.com/gohai/openconnect.git
 PKG_FIXUP:=autoreconf
 
 PKG_SOURCE_VERSION:=$(PKG_REV)
