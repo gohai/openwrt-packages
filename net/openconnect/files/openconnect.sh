@@ -125,6 +125,11 @@ proto_openconnect_setup() {
 	[ "$no_dtls" = 1 ] && append_args --no-dtls
 	[ -n "$mtu" ] && append_args --mtu "$mtu"
 
+	# debugging
+	#append_args -vvvv
+	# debugging: DTLS
+	#(/usr/bin/tcpdump -ni eth0 -s 65535 -w /root/dtls.pcap "(udp port 443 and host 103.242.128.100) or icmp" >/dev/null 2>/dev/null)&
+
 	# migrate to standard config files
 	[ -f "/etc/config/openconnect-user-cert-vpn-$config.pem" ] && mv "/etc/config/openconnect-user-cert-vpn-$config.pem" "/etc/openconnect/user-cert-vpn-$config.pem"
 	[ -f "/etc/config/openconnect-user-key-vpn-$config.pem" ] && mv "/etc/config/openconnect-user-key-vpn-$config.pem" "/etc/openconnect/user-key-vpn-$config.pem"
